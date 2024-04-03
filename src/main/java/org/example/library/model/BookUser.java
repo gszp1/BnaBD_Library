@@ -3,7 +3,6 @@ package org.example.library.model;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDate;
 
 @Entity
@@ -36,9 +35,11 @@ public class BookUser {
     @ManyToOne
     private Book book;
 
-    protected BookUser() {}
+    protected BookUser() {
+    }
 
-    public BookUser(LocalDate borrowDate, Byte borrowed, BigDecimal fee, LocalDate returnDate, Long userDataId, UserData userData) {
+    public BookUser(LocalDate borrowDate, Byte borrowed, BigDecimal fee, LocalDate returnDate,
+                    Long userDataId, UserData userData) {
         this.borrowDate = borrowDate;
         this.borrowed = borrowed;
         this.fee = fee;
@@ -103,6 +104,14 @@ public class BookUser {
         this.userData = userData;
     }
 
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
     @Override
     public String toString() {
         return "BookUser{" +
@@ -113,6 +122,7 @@ public class BookUser {
                 ", returnDate=" + returnDate +
                 ", userDataId=" + userDataId +
                 ", userData=" + userData +
+                ", book=" + book +
                 '}';
     }
 }
