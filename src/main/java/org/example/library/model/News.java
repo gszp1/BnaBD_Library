@@ -28,7 +28,8 @@ public class News {
     @Column(length = 255)
     private String title;
 
-    protected News() {}
+    protected News() {
+    }
 
     public News(Long bookId, String image, LocalDate newsDate, String text, String title) {
         this.bookId = bookId;
