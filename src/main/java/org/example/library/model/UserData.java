@@ -17,7 +17,7 @@ public class UserData {
     @Column(name = "ic_number", length = 255, nullable = false, unique = true)
     private String icNumber;
 
-    @Column(length = 12 , nullable = false, unique = true)
+    @Column(length = 12, nullable = false, unique = true)
     private String pesel;
 
     @Column(length = 255)
@@ -47,7 +47,21 @@ public class UserData {
     @OneToMany(mappedBy = "userData")
     List<BookUser> bookUsers = new ArrayList<>();
 
-    protected UserData() {}
+    protected UserData() {
+    }
+
+    public UserData(String icNumber, String pesel, String city, String email,
+                    String name, String phoneNumber, String postalCode, String street, String surname) {
+        this.icNumber = icNumber;
+        this.pesel = pesel;
+        this.city = city;
+        this.email = email;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.postalCode = postalCode;
+        this.street = street;
+        this.surname = surname;
+    }
 
     public Long getId() {
         return id;

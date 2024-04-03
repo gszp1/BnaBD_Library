@@ -51,7 +51,6 @@ public class Series {
         this.books = books;
     }
 
-    
     @Override
     public String toString() {
         return "Series{" +
