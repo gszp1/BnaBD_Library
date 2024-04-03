@@ -20,10 +20,10 @@ public class Series {
     @OneToMany(mappedBy = "series")
     private List<Book> books = new ArrayList<>();
 
-    protected Series() {}
+    protected Series() {
+    }
 
-    public Series(Long id, String name) {
-        this.id = id;
+    public Series(String name) {
         this.name = name;
     }
 
@@ -51,11 +51,13 @@ public class Series {
         this.books = books;
     }
 
+    
     @Override
     public String toString() {
         return "Series{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", books=" + books +
                 '}';
     }
 }
