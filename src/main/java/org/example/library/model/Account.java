@@ -23,13 +23,17 @@ public class Account {
     @Column(nullable = false, length = 255)
     private String role;
 
+    @Column(name = "user_data_id")
+    private Long userDataId;
+
     protected Account() {}
 
-    public Account(String login, Byte enabled, String password, String role) {
+    public Account(String login, Byte enabled, String password, String role, Long userDataId) {
         this.login = login;
         this.enabled = enabled;
         this.password = password;
         this.role = role;
+        this.userDataId = userDataId;
     }
 
     public Long getId() {
@@ -72,6 +76,14 @@ public class Account {
         this.role = role;
     }
 
+    public Long getUserDataId() {
+        return userDataId;
+    }
+
+    public void setUserDataId(Long userDataId) {
+        this.userDataId = userDataId;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -80,6 +92,7 @@ public class Account {
                 ", enabled=" + enabled +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
+                ", userDataId=" + userDataId +
                 '}';
     }
 }

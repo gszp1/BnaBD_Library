@@ -2,6 +2,9 @@ package org.example.library.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "user_data")
 public class UserData {
@@ -37,6 +40,12 @@ public class UserData {
 
     @Column(length = 255)
     private String surname;
+
+    @OneToMany(cascade = CascadeType.ALL,
+                orphanRemoval = true)
+    @JoinColumn(name = "user_data_id",
+    foreignKey = @ForeignKey(name = "FK_account_user_data"))
+    List<Account> accounts = new ArrayList<>();
 
     protected UserData() {}
 
