@@ -17,8 +17,8 @@ public class Genre {
     @Column(length = 255, unique = true, nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "genres")
-    private List<Book> books = new ArrayList<>();
+    @OneToMany(mappedBy = "genre")
+    private List<GenreBook> genreBooks  = new ArrayList<>();
 
     protected Genre() {}
 
@@ -42,21 +42,20 @@ public class Genre {
         this.name = name;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public List<GenreBook> getGenreBooks() {
+        return genreBooks;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setGenreBooks(List<GenreBook> genreBooks) {
+        this.genreBooks = genreBooks;
     }
-
 
     @Override
     public String toString() {
         return "Genre{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", books=" + books +
+                ", genreBooks=" + genreBooks +
                 '}';
     }
 }

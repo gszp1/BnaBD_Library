@@ -49,13 +49,8 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<KeywordBook> bookKeywords = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(
-        name = "book_genres",
-        joinColumns = @JoinColumn(name = "books_book_id"),
-        inverseJoinColumns = @JoinColumn(name = "genres_genre_id")
-    )
-    private List<Genre> genres = new ArrayList<>();
+    @OneToMany(mappedBy = "book")
+    private List<GenreBook> genres = new ArrayList<>();
 
     @OneToMany(mappedBy = "book")
     private List<AuthorBook> bookAuthors = new ArrayList<>();
@@ -158,13 +153,11 @@ public class Book {
         this.bookAuthors = bookAuthors;
     }
 
-    public List<Genre> getGenres() {
+    public List<GenreBook> getGenres() {
         return genres;
     }
 
-    public void setGenres(List<Genre> genres) {
+    public void setGenres(List<GenreBook> genres) {
         this.genres = genres;
     }
-
-
 }
