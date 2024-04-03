@@ -62,6 +62,9 @@ public class Book {
     )
     private List<Genre> genres = new ArrayList<>();
 
+    @OneToMany(mappedBy = "book")
+    private List<AuthorBook> bookAuthors = new ArrayList<>();
+
     protected Book() {}
 
     public Long getId() {

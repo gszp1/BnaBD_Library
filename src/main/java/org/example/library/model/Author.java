@@ -1,11 +1,12 @@
 package org.example.library.model;
 
 import jakarta.persistence.*;
-import org.example.library.key.AuthorPrimaryKey;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "authors")
-@IdClass(AuthorPrimaryKey.class)
 public class Author {
 
     @Id
@@ -13,9 +14,11 @@ public class Author {
     @Column(name = "author_id")
     private Long id;
 
-    @Id
-    @Column(length = 255)
+    @Column(length = 255, nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "author")
+    private List<AuthorBook> authorBooks = new ArrayList<>();
 
     protected Author() {}
 
@@ -39,11 +42,20 @@ public class Author {
         this.name = name;
     }
 
+    public List<AuthorBook> getAuthorBooks() {
+        return authorBooks;
+    }
+
+    public void setAuthorBooks(List<AuthorBook> authorBooks) {
+        this.authorBooks = authorBooks;
+    }
+
     @Override
     public String toString() {
         return "Author{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", authorBooks=" + authorBooks +
                 '}';
     }
 }

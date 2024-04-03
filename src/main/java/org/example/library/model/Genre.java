@@ -1,12 +1,9 @@
 package org.example.library.model;
 
 import jakarta.persistence.*;
-import org.example.library.key.GenrePrimaryKey;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "genres")
