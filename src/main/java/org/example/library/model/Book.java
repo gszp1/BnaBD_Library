@@ -42,6 +42,10 @@ public class Book {
     @JoinColumn(name = "series_id")
     private Series series;
 
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
+
     protected Book() {}
 
     public Long getId() {
@@ -114,5 +118,13 @@ public class Book {
 
     public void setSeries(Series series) {
         this.series = series;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
     }
 }

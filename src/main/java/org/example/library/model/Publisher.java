@@ -1,11 +1,12 @@
 package org.example.library.model;
 
 import jakarta.persistence.*;
-import org.example.library.key.PublisherPrimaryKey;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "publishers")
-@IdClass(PublisherPrimaryKey.class)
 public class Publisher {
 
     @Id
@@ -13,8 +14,11 @@ public class Publisher {
     @Column(name = "publisher_id")
     private Long id;
 
-    @Column(length = 255)
+    @Column(length = 255, nullable = false, unique = true)
     private String name;
+
+    @OneToMany(mappedBy = "publisher")
+    private List<Book> publishedBooks = new ArrayList<>();
 
     protected Publisher() {}
 
@@ -36,6 +40,14 @@ public class Publisher {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Book> getPublishedBooks() {
+        return publishedBooks;
+    }
+
+    public void setPublishedBooks(List<Book> publishedBooks) {
+        this.publishedBooks = publishedBooks;
     }
 
     @Override
