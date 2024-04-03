@@ -17,8 +17,8 @@ public class Keyword {
     @Column(length = 255, nullable = false, unique = true)
     private String name;
 
-    @ManyToMany(mappedBy = "keywords")
-    private List<Book> books = new ArrayList<>();
+    @OneToMany(mappedBy = "keyword")
+    private List<KeywordBook> keywordBooks = new ArrayList<>();
 
     protected Keyword() {}
 
@@ -42,12 +42,12 @@ public class Keyword {
         this.name = name;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public List<KeywordBook> getKeywordBooks() {
+        return keywordBooks;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setKeywordBooks(List<KeywordBook> keywordBooks) {
+        this.keywordBooks = keywordBooks;
     }
 
     @Override
@@ -55,6 +55,7 @@ public class Keyword {
         return "Keyword{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", keywordBooks=" + keywordBooks +
                 '}';
     }
 }
