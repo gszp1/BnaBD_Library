@@ -38,6 +38,10 @@ public class Book {
     @OneToMany(mappedBy="book")
     private List<BookUser> bookBorrows = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "series_id")
+    private Series series;
+
     protected Book() {}
 
     public Long getId() {
@@ -102,5 +106,13 @@ public class Book {
 
     public void setBookBorrows(List<BookUser> bookBorrows) {
         this.bookBorrows = bookBorrows;
+    }
+
+    public Series getSeries() {
+        return series;
+    }
+
+    public void setSeries(Series series) {
+        this.series = series;
     }
 }

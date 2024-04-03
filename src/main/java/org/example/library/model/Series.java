@@ -1,11 +1,12 @@
 package org.example.library.model;
 
 import jakarta.persistence.*;
-import org.example.library.key.SeriesPrimaryKey;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "series")
-@IdClass(SeriesPrimaryKey.class)
 public class Series {
 
     @Id
@@ -13,8 +14,11 @@ public class Series {
     @Column(name = "series_id")
     private Long id;
 
-    @Column(length = 255)
+    @Column(length = 255, unique = true, nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "series")
+    private List<Book> books = new ArrayList<>();
 
     protected Series() {}
 
@@ -37,6 +41,14 @@ public class Series {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     @Override
