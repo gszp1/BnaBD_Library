@@ -15,9 +15,7 @@ public class AuthorPrimaryKey implements Serializable {
     @Column(length = 255)
     private String name;
 
-    public AuthorPrimaryKey() {
-        super();
-    }
+    protected AuthorPrimaryKey() {}
 
     public AuthorPrimaryKey(Long id, String name) {
         this.id = id;

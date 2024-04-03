@@ -10,8 +10,7 @@ public class Author {
     @EmbeddedId
     private AuthorPrimaryKey primaryKey;
 
-    public Author() {
-    }
+    protected Author() {}
 
     public Author(AuthorPrimaryKey primaryKey) {
         this.primaryKey = primaryKey;
