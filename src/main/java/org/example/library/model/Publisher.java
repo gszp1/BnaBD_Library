@@ -20,7 +20,8 @@ public class Publisher {
     @OneToMany(mappedBy = "publisher")
     private List<Book> publishedBooks = new ArrayList<>();
 
-    protected Publisher() {}
+    protected Publisher() {
+    }
 
     public Publisher(String name) {
         this.name = name;
@@ -55,6 +56,7 @@ public class Publisher {
         return "Publisher{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", publishedBooks=" + publishedBooks +
                 '}';
     }
 }
