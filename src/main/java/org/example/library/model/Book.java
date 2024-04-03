@@ -3,7 +3,9 @@ package org.example.library.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -32,6 +34,9 @@ public class Book {
 
     @Column(nullable = false)
     private LocalDate releaseDate;
+
+    @OneToMany(mappedBy="book")
+    private List<BookUser> bookBorrows = new ArrayList<>();
 
     protected Book() {}
 
@@ -91,4 +96,11 @@ public class Book {
         this.releaseDate = releaseDate;
     }
 
+    public List<BookUser> getBookBorrows() {
+        return bookBorrows;
+    }
+
+    public void setBookBorrows(List<BookUser> bookBorrows) {
+        this.bookBorrows = bookBorrows;
+    }
 }

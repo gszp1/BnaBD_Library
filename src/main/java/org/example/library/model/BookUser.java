@@ -30,14 +30,19 @@ public class BookUser {
     @Column(name = "user_data_id")
     private Long userDataId;
 
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
+
     protected BookUser() {}
 
-    public BookUser(LocalDate borrowDate, Byte borrowed, BigDecimal fee, LocalDate returnDate, Long userDataId) {
+    public BookUser(LocalDate borrowDate, Byte borrowed, BigDecimal fee, LocalDate returnDate, Long userDataId, Book book) {
         this.borrowDate = borrowDate;
         this.borrowed = borrowed;
         this.fee = fee;
         this.returnDate = returnDate;
         this.userDataId = userDataId;
+        this.book = book;
     }
 
     public Long getId() {
