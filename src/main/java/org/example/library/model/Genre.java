@@ -18,9 +18,10 @@ public class Genre {
     private String name;
 
     @OneToMany(mappedBy = "genre")
-    private List<GenreBook> genreBooks  = new ArrayList<>();
+    private List<GenreBook> genreBooks = new ArrayList<>();
 
-    protected Genre() {}
+    protected Genre() {
+    }
 
     public Genre(String name) {
         this.name = name;
