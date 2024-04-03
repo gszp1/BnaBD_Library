@@ -1,7 +1,6 @@
 package org.example.library.model;
 
 import jakarta.persistence.*;
-import org.apache.catalina.User;
 
 @Entity
 @Table(name = "accounts")
@@ -27,7 +26,8 @@ public class Account {
     @ManyToOne
     private UserData userData;
 
-    protected Account() {}
+    protected Account() {
+    }
 
     public Account(String login, Byte enabled, String password, String role, UserData userData) {
         this.login = login;
