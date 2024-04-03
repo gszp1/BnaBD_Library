@@ -1,28 +1,32 @@
 package org.example.library.model;
 
 import jakarta.persistence.*;
+import org.example.library.key.GenrePrimaryKey;
 
 @Entity
 @Table(name = "genres")
+@IdClass(GenrePrimaryKey.class)
 public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "genre_id")
-    private long id;
+    private Long id;
 
-    @Column(length = 255, nullable = false)
+    @Id
     private String name;
 
-    public Genre() {
-        super();
+    protected Genre() {}
+
+    public Genre(String name) {
+        this.name = name;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
