@@ -46,6 +46,14 @@ public class Book {
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
+    @ManyToMany
+    @JoinTable (
+        name = "books_keywords",
+        joinColumns = @JoinColumn(name = "books_book_id"),
+        inverseJoinColumns = @JoinColumn(name = "keywords_keyword_id")
+    )
+    private List<Keyword> keywords = new ArrayList<>();
+
     protected Book() {}
 
     public Long getId() {

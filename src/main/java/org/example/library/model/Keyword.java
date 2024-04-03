@@ -2,6 +2,9 @@ package org.example.library.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "keywords")
 public class Keyword {
@@ -11,9 +14,11 @@ public class Keyword {
     @Column(name = "keyword_id")
     private Long id;
 
-    @Id
-    @Column(length = 255)
+    @Column(length = 255, nullable = false, unique = true)
     private String name;
+
+    @ManyToMany(mappedBy = "keywords")
+    private List<Book> books = new ArrayList<>();
 
     protected Keyword() {}
 
