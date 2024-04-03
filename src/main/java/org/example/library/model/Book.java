@@ -135,4 +135,12 @@ public class Book {
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
     }
+
+    public List<Keyword> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(List<Keyword> keywords) {
+        this.keywords = keywords;
+    }
 }
