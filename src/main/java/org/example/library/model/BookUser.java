@@ -27,13 +27,17 @@ public class BookUser {
     @Column(nullable = false, name = "return_date")
     private LocalDate returnDate;
 
+    @Column(name = "user_data_id")
+    private Long userDataId;
+
     protected BookUser() {}
 
-    public BookUser(LocalDate borrowDate, Byte borrowed, BigDecimal fee, LocalDate returnDate) {
+    public BookUser(LocalDate borrowDate, Byte borrowed, BigDecimal fee, LocalDate returnDate, Long userDataId) {
         this.borrowDate = borrowDate;
         this.borrowed = borrowed;
         this.fee = fee;
         this.returnDate = returnDate;
+        this.userDataId = userDataId;
     }
 
     public Long getId() {
@@ -76,6 +80,14 @@ public class BookUser {
         this.returnDate = returnDate;
     }
 
+    public Long getUserDataId() {
+        return userDataId;
+    }
+
+    public void setUserDataId(Long userDataId) {
+        this.userDataId = userDataId;
+    }
+
     @Override
     public String toString() {
         return "BookUser{" +
@@ -84,6 +96,7 @@ public class BookUser {
                 ", borrowed=" + borrowed +
                 ", fee=" + fee +
                 ", returnDate=" + returnDate +
+                ", userDataId=" + userDataId +
                 '}';
     }
 }

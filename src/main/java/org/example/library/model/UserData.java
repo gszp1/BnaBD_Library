@@ -47,6 +47,11 @@ public class UserData {
     foreignKey = @ForeignKey(name = "FK_account_user_data"))
     List<Account> accounts = new ArrayList<>();
 
+    @OneToMany
+    @JoinColumn(name = "user_data_id",
+    foreignKey = @ForeignKey(name = "FK_user_data_book_user"))
+    List<BookUser> bookUsers = new ArrayList<>();
+
     protected UserData() {}
 
     public Long getId() {
@@ -137,6 +142,14 @@ public class UserData {
         this.accounts = accounts;
     }
 
+    public List<BookUser> getBookUsers() {
+        return bookUsers;
+    }
+
+    public void setBookUsers(List<BookUser> bookUsers) {
+        this.bookUsers = bookUsers;
+    }
+
     @Override
     public String toString() {
         return "UserData{" +
@@ -151,6 +164,7 @@ public class UserData {
                 ", street='" + street + '\'' +
                 ", surname='" + surname + '\'' +
                 ", accounts=" + accounts +
+                ", bookUsers=" + bookUsers +
                 '}';
     }
 }
