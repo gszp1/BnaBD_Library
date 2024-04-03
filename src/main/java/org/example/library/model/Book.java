@@ -54,6 +54,14 @@ public class Book {
     )
     private List<Keyword> keywords = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+        name = "book_genres",
+        joinColumns = @JoinColumn(name = "books_book_id"),
+        inverseJoinColumns = @JoinColumn(name = "genres_genre_id")
+    )
+    private List<Genre> genres = new ArrayList<>();
+
     protected Book() {}
 
     public Long getId() {
@@ -143,4 +151,14 @@ public class Book {
     public void setKeywords(List<Keyword> keywords) {
         this.keywords = keywords;
     }
+
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
+
+
 }

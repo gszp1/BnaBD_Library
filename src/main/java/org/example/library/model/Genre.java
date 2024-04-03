@@ -3,12 +3,13 @@ package org.example.library.model;
 import jakarta.persistence.*;
 import org.example.library.key.GenrePrimaryKey;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "genres")
-@IdClass(GenrePrimaryKey.class)
 public class Genre {
 
     @Id
@@ -16,9 +17,11 @@ public class Genre {
     @Column(name = "genre_id")
     private Long id;
 
-    @Id
-    @Column(length = 255)
+    @Column(length = 255, unique = true, nullable = false)
     private String name;
+
+    @ManyToMany(mappedBy = "genres")
+    private List<Book> books = new ArrayList<>();
 
     protected Genre() {}
 
@@ -42,11 +45,21 @@ public class Genre {
         this.name = name;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+
     @Override
     public String toString() {
         return "Genre{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", books=" + books +
                 '}';
     }
 }
