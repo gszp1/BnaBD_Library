@@ -39,13 +39,14 @@ public class BookUser {
     }
 
     public BookUser(LocalDate borrowDate, Byte borrowed, BigDecimal fee, LocalDate returnDate,
-                    Long userDataId, UserData userData) {
+                    Long userDataId, UserData userData, Book book) {
         this.borrowDate = borrowDate;
         this.borrowed = borrowed;
         this.fee = fee;
         this.returnDate = returnDate;
         this.userDataId = userDataId;
         this.userData = userData;
+        this.book = book;
     }
 
     public Long getId() {
