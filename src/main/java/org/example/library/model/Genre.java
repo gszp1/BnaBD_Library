@@ -3,6 +3,9 @@ package org.example.library.model;
 import jakarta.persistence.*;
 import org.example.library.key.GenrePrimaryKey;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "genres")
 @IdClass(GenrePrimaryKey.class)
@@ -14,6 +17,7 @@ public class Genre {
     private Long id;
 
     @Id
+    @Column(length = 255)
     private String name;
 
     protected Genre() {}
