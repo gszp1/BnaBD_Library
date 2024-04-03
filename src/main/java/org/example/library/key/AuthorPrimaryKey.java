@@ -6,13 +6,10 @@ import jakarta.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Embeddable
 public class AuthorPrimaryKey implements Serializable {
 
-    @Column(name = "author_id")
     private Long id;
 
-    @Column(length = 255)
     private String name;
 
     protected AuthorPrimaryKey() {}
