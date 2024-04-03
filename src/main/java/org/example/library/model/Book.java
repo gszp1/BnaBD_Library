@@ -59,6 +59,18 @@ public class Book {
     protected Book() {
     }
 
+    public Book(String isbn, String image, String name, String place, Long quantity,
+                LocalDate releaseDate, Long tome, Series series, Publisher publisher) {
+        this.isbn = isbn;
+        this.image = image;
+        this.name = name;
+        this.place = place;
+        this.quantity = quantity;
+        this.releaseDate = releaseDate;
+        this.tome = tome;
+        this.series = series;
+        this.publisher = publisher;
+    }
 
     public Long getId() {
         return id;
