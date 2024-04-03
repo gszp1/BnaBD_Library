@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "books")
@@ -35,7 +33,10 @@ public class Book {
     @Column(nullable = false)
     private LocalDate releaseDate;
 
-    @OneToMany(mappedBy="book")
+    @Column(nullable = false)
+    private Long tome;
+
+    @OneToMany(mappedBy = "book")
     private List<BookUser> bookBorrows = new ArrayList<>();
 
     @ManyToOne
@@ -55,7 +56,9 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<AuthorBook> bookAuthors = new ArrayList<>();
 
-    protected Book() {}
+    protected Book() {
+    }
+
 
     public Long getId() {
         return id;
@@ -159,5 +162,33 @@ public class Book {
 
     public void setGenres(List<GenreBook> genres) {
         this.genres = genres;
+    }
+
+    public Long getTome() {
+        return tome;
+    }
+
+    public void setTome(Long tome) {
+        this.tome = tome;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", isbn='" + isbn + '\'' +
+                ", image='" + image + '\'' +
+                ", name='" + name + '\'' +
+                ", place='" + place + '\'' +
+                ", quantity=" + quantity +
+                ", releaseDate=" + releaseDate +
+                ", tome=" + tome +
+                ", bookBorrows=" + bookBorrows +
+                ", series=" + series +
+                ", publisher=" + publisher +
+                ", bookKeywords=" + bookKeywords +
+                ", genres=" + genres +
+                ", bookAuthors=" + bookAuthors +
+                '}';
     }
 }
