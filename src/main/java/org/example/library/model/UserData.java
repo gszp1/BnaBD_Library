@@ -41,15 +41,10 @@ public class UserData {
     @Column(length = 255)
     private String surname;
 
-    @OneToMany(cascade = CascadeType.ALL,
-                orphanRemoval = true)
-    @JoinColumn(name = "user_data_id",
-    foreignKey = @ForeignKey(name = "FK_account_user_data"))
+    @OneToMany(mappedBy = "userData")
     List<Account> accounts = new ArrayList<>();
 
-    @OneToMany
-    @JoinColumn(name = "user_data_id",
-    foreignKey = @ForeignKey(name = "FK_user_data_book_user"))
+    @OneToMany(mappedBy = "userData")
     List<BookUser> bookUsers = new ArrayList<>();
 
     protected UserData() {}

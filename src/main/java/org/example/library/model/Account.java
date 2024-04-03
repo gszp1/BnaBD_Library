@@ -1,6 +1,7 @@
 package org.example.library.model;
 
 import jakarta.persistence.*;
+import org.apache.catalina.User;
 
 @Entity
 @Table(name = "accounts")
@@ -23,17 +24,17 @@ public class Account {
     @Column(nullable = false, length = 255)
     private String role;
 
-    @Column(name = "user_data_id")
-    private Long userDataId;
+    @ManyToOne
+    private UserData userData;
 
     protected Account() {}
 
-    public Account(String login, Byte enabled, String password, String role, Long userDataId) {
+    public Account(String login, Byte enabled, String password, String role, UserData userData) {
         this.login = login;
         this.enabled = enabled;
         this.password = password;
         this.role = role;
-        this.userDataId = userDataId;
+        this.userData = userData;
     }
 
     public Long getId() {
@@ -76,12 +77,12 @@ public class Account {
         this.role = role;
     }
 
-    public Long getUserDataId() {
-        return userDataId;
+    public UserData getUserData() {
+        return userData;
     }
 
-    public void setUserDataId(Long userDataId) {
-        this.userDataId = userDataId;
+    public void setUserData(UserData userData) {
+        this.userData = userData;
     }
 
     @Override
@@ -92,7 +93,7 @@ public class Account {
                 ", enabled=" + enabled +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
-                ", userDataId=" + userDataId +
+                ", userData=" + userData +
                 '}';
     }
 }

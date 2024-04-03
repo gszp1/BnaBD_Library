@@ -31,18 +31,20 @@ public class BookUser {
     private Long userDataId;
 
     @ManyToOne
-    @JoinColumn(name = "book_id")
+    private UserData userData;
+
+    @ManyToOne
     private Book book;
 
     protected BookUser() {}
 
-    public BookUser(LocalDate borrowDate, Byte borrowed, BigDecimal fee, LocalDate returnDate, Long userDataId, Book book) {
+    public BookUser(LocalDate borrowDate, Byte borrowed, BigDecimal fee, LocalDate returnDate, Long userDataId, UserData userData) {
         this.borrowDate = borrowDate;
         this.borrowed = borrowed;
         this.fee = fee;
         this.returnDate = returnDate;
         this.userDataId = userDataId;
-        this.book = book;
+        this.userData = userData;
     }
 
     public Long getId() {
@@ -93,12 +95,12 @@ public class BookUser {
         this.userDataId = userDataId;
     }
 
-    public Book getBook() {
-        return book;
+    public UserData getUserData() {
+        return userData;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setUserData(UserData userData) {
+        this.userData = userData;
     }
 
     @Override
@@ -110,6 +112,7 @@ public class BookUser {
                 ", fee=" + fee +
                 ", returnDate=" + returnDate +
                 ", userDataId=" + userDataId +
+                ", userData=" + userData +
                 '}';
     }
 }
