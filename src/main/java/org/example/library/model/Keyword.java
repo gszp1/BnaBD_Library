@@ -20,7 +20,8 @@ public class Keyword {
     @OneToMany(mappedBy = "keyword")
     private List<KeywordBook> keywordBooks = new ArrayList<>();
 
-    protected Keyword() {}
+    protected Keyword() {
+    }
 
     public Keyword(String name) {
         this.name = name;
