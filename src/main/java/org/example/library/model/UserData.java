@@ -129,6 +129,14 @@ public class UserData {
         this.surname = surname;
     }
 
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
+
     @Override
     public String toString() {
         return "UserData{" +
@@ -142,6 +150,7 @@ public class UserData {
                 ", postalCode='" + postalCode + '\'' +
                 ", street='" + street + '\'' +
                 ", surname='" + surname + '\'' +
+                ", accounts=" + accounts +
                 '}';
     }
 }
